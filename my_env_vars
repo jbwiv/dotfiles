@@ -1,0 +1,31 @@
+export TIMCO=false
+
+export JAVA_HOME="/opt/java"
+export JDK_HOME="/opt/java"
+export ANT_HOME="/opt/ant"
+export SCALA_HOME="/opt/scala"
+export JRUBY_HOME="/opt/jruby"
+export GROOVY_HOME="/opt/groovy/target/install"
+export GRAILS_HOME="/opt/grails"
+export PATH=$JAVA_HOME/bin:$SCALA_HOME/bin:$PATH:$HOME/bin:$ANT_HOME/bin:$JRUBY_HOME/bin:$GROOVY_HOME/bin:$GRAILS_HOME/bin
+
+#export PS1="[\$PWD]-] "
+export aft="-i /media/disk/home/jb/.ssh/id_rsa"
+
+set -o vi
+
+alias rm="rm -i"
+alias s="ssh"
+alias cemacs="emacs -nw"
+
+alias rdesktop="rdesktop -g 1500x900"
+
+export GREP_OPTIONS='--color=auto'
+#export AWT_TOOLKIT=MToolkit
+
+if [ $TIMCO==true ]
+then
+  export CLASSPATH=.:$HOME/RESOURCES/jdbc/postgresql-8.1-412.jdbc3.jar
+fi
+
+alias screen="screen -a -h 5000"

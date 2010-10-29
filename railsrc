@@ -18,3 +18,12 @@ end
 def hide_log
   change_log(nil)
 end
+
+def show_hirb
+  Hirb.enable
+end
+
+def hide_hirb
+  Hirb.disable
+end
+  
