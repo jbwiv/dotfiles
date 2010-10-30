@@ -58,3 +58,5 @@ nmap <silent> <leader>tree :NERDTree<CR>
 
 :set cursorline
 
+let g:Tlist_Auto_Open = 1
+let g:Tlist_Use_Right_Window = 1
