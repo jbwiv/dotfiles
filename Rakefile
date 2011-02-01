@@ -6,22 +6,29 @@ task :install do
   replace_all = false
   Dir['*'].each do |file|
     next if %w[Rakefile README.rdoc LICENSE].include? file
-    
-    if File.exist?(File.join(ENV['HOME'], ".#{file.sub('.erb', '')}"))
+    f_name =  File.join(ENV['HOME'], ".#{file.sub('.erb', '')}")
+    if File.exist?(f_name)
       if replace_all
         replace_file(file)
       else
-        print "overwrite ~/.#{file.sub('.erb', '')}? [ynaq] "
-        case $stdin.gets.chomp
-        when 'a'
-          replace_all = true
-          replace_file(file)
-        when 'y'
-          replace_file(file)
-        when 'q'
-          exit
-        else
-          puts "skipping ~/.#{file.sub('.erb', '')}"
+        begin
+          print "overwrite ~/.#{file.sub('.erb', '')}? [yndaq] "
+          case $stdin.gets.chomp
+          when 'a'
+            replace_all = true
+            replace_file(file)
+          when 'y'
+            replace_file(file)
+          when 'q'
+            exit
+          when 'd'
+            puts `diff -y #{f_name} #{file}`
+            raise
+          else
+            puts "skipping ~/.#{file.sub('.erb', '')}"
+          end
+        rescue 
+          retry
         end
       end
     else

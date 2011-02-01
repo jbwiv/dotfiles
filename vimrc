@@ -53,8 +53,14 @@ set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set ruler
 
 set listchars=tab:>-,trail:·,eol:$
+
+let mapleader = ","
 nmap <silent> <leader>s :set nolist!<CR>
 nmap <silent> <leader>tree :NERDTree<CR>
+map <leader>ff :FufFile<CR>
+map <leader>fb :FufBuffer<CR>
+map <leader>rrc :source $MYVIMRC<CR>
+
 
 :set cursorline
 
